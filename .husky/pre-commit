@@ -1,0 +1,9 @@
+echo 'Running format'
+
+pnpm format
+
+echo 'Running lint'
+
+pnpm lint
+
+echo 'Format and lint ✅'
