@@ -1,0 +1,5 @@
+echo 'Validating commit message 🕵️'
+
+pnpm dlx commitlint --edit $1
+
+echo 'Commit ✅'
