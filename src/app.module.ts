@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RedisModule } from './redis/redis.module';
 import { ConfigModule } from '@nestjs/config';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), RedisModule],
+  imports: [ConfigModule.forRoot(), RedisModule, WeatherModule],
   controllers: [AppController],
   providers: [AppService],
 })
