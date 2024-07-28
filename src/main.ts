@@ -30,6 +30,11 @@ async function bootstrap() {
     }),
   );
 
+  const httpAdapter = app.getHttpAdapter();
+  httpAdapter.get('/', (req, res) => {
+    res.redirect(`/${globalPrefix}`);
+  });
+
   const PORT = process.env.PORT || 3000;
   await app.listen(PORT);
 
@@ -38,5 +43,3 @@ async function bootstrap() {
   );
 }
 bootstrap();
-
-// TODO: update read, when MVP is ready
