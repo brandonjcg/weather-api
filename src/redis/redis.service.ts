@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { RedisClient } from './redis.provider';
+import { REDIS_CLIENT_NAME } from './redis.constants';
 
 @Injectable()
 export class RedisService {
   public constructor(
-    @Inject('REDIS_CLIENT')
+    @Inject(REDIS_CLIENT_NAME)
     private readonly client: RedisClient,
   ) {}
 

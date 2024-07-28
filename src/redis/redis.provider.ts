@@ -1,6 +1,7 @@
 import { Provider } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
+import { REDIS_CLIENT_NAME } from './redis.constants';
 
 export type RedisClient = Redis & {
   setWithTTL: (key: string, value: string, ttl?: number) => Promise<string>;
@@ -31,5 +32,5 @@ export const RedisProvider: Provider = {
 
     return client;
   },
-  provide: 'REDIS_CLIENT',
+  provide: REDIS_CLIENT_NAME,
 };
