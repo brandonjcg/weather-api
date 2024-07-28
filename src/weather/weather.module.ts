@@ -3,7 +3,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule } from '@nestjs/axios';
 import { WeatherController } from './weather.controller';
 import { WeatherService } from './weather.service';
-import { RedisModule, RedisProvider } from '@/redis';
+import { RedisModule, RedisProvider } from '../redis';
 
 @Module({
   controllers: [WeatherController],

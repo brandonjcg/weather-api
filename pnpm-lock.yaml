@@ -41,6 +41,9 @@ dependencies:
   ioredis:
     specifier: ^5.4.1
     version: 5.4.1
+  redis:
+    specifier: link:@/redis
+    version: link:@/redis
   reflect-metadata:
     specifier: ^0.2.0
     version: 0.2.2

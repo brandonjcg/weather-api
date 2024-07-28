@@ -3,7 +3,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { firstValueFrom } from 'rxjs';
-import { REDIS_CLIENT_NAME, RedisClient } from '@/redis';
+import { REDIS_CLIENT_NAME, RedisClient } from '../redis/';
 import { LogsDto, WeatherDto } from './dto';
 import { IQuery, IWeather } from './interfaces';
 
