@@ -1,19 +1,19 @@
-export interface WeatherDTO {
-  bulk: BulkDTO[];
+export interface IWeather {
+  bulk: IBulk[];
 }
 
-export interface BulkDTO {
-  query: QueryDTO;
+export interface IBulk {
+  query: IQuery;
 }
 
-export interface QueryDTO {
+export interface IQuery {
   custom_id: string;
   q: string;
-  location: LocationDTO;
-  current: CurrentDTO;
+  location: ILocation;
+  current: ICurrent;
 }
 
-export interface LocationDTO {
+export interface ILocation {
   name: string;
   region: string;
   country: string;
@@ -24,13 +24,13 @@ export interface LocationDTO {
   localtime: string;
 }
 
-export interface CurrentDTO {
+export interface ICurrent {
   last_updated_epoch: number;
   last_updated: string;
   temp_c: number;
   temp_f: number;
   is_day: number;
-  condition: ConditionDTO;
+  condition: ConditionDto;
   wind_mph: number;
   wind_kph: number;
   wind_degree: number;
@@ -56,7 +56,7 @@ export interface CurrentDTO {
   gust_kph: number;
 }
 
-export interface ConditionDTO {
+export interface ConditionDto {
   text: string;
   icon: string;
   code: number;

@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,6 +9,20 @@ async function bootstrap() {
 
   const globalPrefix = 'api/v1';
   app.setGlobalPrefix(globalPrefix);
+
+  const config = new DocumentBuilder()
+    .setTitle('Weather API')
+    .setVersion('3.0')
+    .build();
+  SwaggerModule.setup(
+    `${globalPrefix}/docs`,
+    app,
+    SwaggerModule.createDocument(app, config),
+    {
+      customSiteTitle: 'Weather API doc',
+    },
+  );
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
