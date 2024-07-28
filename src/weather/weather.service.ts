@@ -4,7 +4,8 @@ import { ConfigService } from '@nestjs/config';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { firstValueFrom } from 'rxjs';
 import { REDIS_CLIENT_NAME, RedisClient } from '@/redis';
-import { QueryDTO, WeatherDTO } from './weather.dto';
+import { LogsDto, WeatherDto } from './dto';
+import { IQuery, IWeather } from './interfaces';
 
 const logger = new Logger('WeatherService');
 
@@ -26,7 +27,7 @@ export class WeatherService {
 
       const endpoint = `${this.getEndpoint()}&q=bulk`;
       const response = await firstValueFrom(
-        this.httpService.post<WeatherDTO>(
+        this.httpService.post<IWeather>(
           endpoint,
           this.buildBodyRequest(this.getCountriesToFetch()),
         ),
@@ -60,7 +61,7 @@ export class WeatherService {
     };
   }
 
-  async saveInRedis(data: WeatherDTO) {
+  async saveInRedis(data: IWeather) {
     for (const weather of data.bulk) {
       await this.client.setWithTTL(
         `weather:${this.buildCountryKey(weather.query.location.name)}`,
@@ -70,7 +71,7 @@ export class WeatherService {
     logger.log('✅ Weather data saved in Redis');
   }
 
-  buildDataRequerid(data: QueryDTO) {
+  buildDataRequerid(data: IQuery) {
     return {
       locationName: `${data.location.name} - ${data.location.country}`,
       temperatureCelcius: data.current.temp_c,
@@ -90,7 +91,7 @@ export class WeatherService {
     logger.error(error);
   }
 
-  async getAllWeatherData() {
+  async getAllWeatherData(): Promise<WeatherDto[]> {
     const keys = await this.client.keys('weather:*');
 
     const data = await Promise.all(
@@ -103,7 +104,7 @@ export class WeatherService {
     return data;
   }
 
-  async getDataByLocation(location: string) {
+  async getDataByLocation(location: string): Promise<WeatherDto> {
     const key = `weather:${this.buildCountryKey(location)}`;
     const value = await this.client.get(key);
 
@@ -114,7 +115,7 @@ export class WeatherService {
     return location.toLowerCase().replace(/\s/g, '-');
   }
 
-  async getLogs() {
+  async getLogs(): Promise<LogsDto[]> {
     const values = await this.client.lrange('error', 0, -1);
 
     return values.map((value) => JSON.parse(value));
