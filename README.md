@@ -1,73 +1,82 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<div align="center">
+  <h2>
+      Weather API 🌦️
+</h2>
+</div>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div align="center">
+    <a href="#🚀-empezar">
+        Empezar
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#🧞-comandos">
+        Comandos
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#🔑-licencia">
+        Licencia
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="https://github.com/brandonjcg">
+        Personal
+    </a>
+   
+</div>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p></p>
 
-## Description
+## 🛠️ Stack
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [**NestJS**](https://nestjs.com/) - Framework de JS potente y ligero para construir aplicaciones web
+- [**Redis**](https://reactjs.org/) - Base de datos en memoria
+- [**Typescript**](https://www.typescriptlang.org/) - JavaScript con sintaxis de tipado
 
-## Installation
+## 🚀 Empezar
 
-```bash
-$ pnpm install
-```
+### 1. Clonar el repo [weather-api](https://github.com/brandonjcg/weather-api)
 
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
+- Yo uso [pnpm](https://pnpm.io/installation) como gestor de dependencias y empaquetador.
 
 ```bash
-# unit tests
-$ pnpm run test
+# Activa pnpm en MacOS, WSL & Linux:
+corepack enable
+corepack prepare pnpm@latest --activate
 
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+# Inicializa el proyecto
+git clone https://github.com/brandonjcg/weather-api
 ```
 
-## Support
+### 2. Instalar dependencias
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# Instala las dependencias
+pnpm install
+```
 
-## Stay in touch
+### 3. Lanza el servidor de desarrollo:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Disfruta del resultado
+pnpm dev
+```
 
-## License
+1. Abre [**http://localhost:5001**](http://localhost:5001/) en tu navegador para ver el resultado 🚀
 
-Nest is [MIT licensed](LICENSE).
+## 🧞 Comandos
+
+|     | Comando     | Acción                                                                       |
+| :-- | :---------- | :--------------------------------------------------------------------------- |
+| ⚙️  | `start:dev` | Lanza un servidor de desarrollo local en `localhost:5001`.                   |
+| ⚙️  | `build`     | Comprueba posibles errores y hace un empaquetado de producción en `./dist/`. |
+| ⚙️  | `prod`      | Servidor empaquetado en el host: `localhost:5001`                            |
+
+## Desplegar a producción 🚀
+
+Para desplegar a producción, sigue estos pasos:
+
+1. Crea un Merge Request (MR) hacia la rama `main`
+2. Una vez aprobado y mergeado el MR, Vercel automáticamente desplegará la aplicación en producción en el cloud de Vercel
+
+## 🔑 Licencia
+
+[MIT](LICENSE.txt) - Creado por [**brandonjcg**](https://github.com/brandonjcg)
