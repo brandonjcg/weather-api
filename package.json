@@ -37,7 +37,8 @@
     "path": "^0.12.7",
     "redis": "link:@/redis",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-dist": "^5.17.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

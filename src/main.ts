@@ -2,8 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as express from 'express';
-import * as path from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,21 +10,22 @@ async function bootstrap() {
   const globalPrefix = 'api/v1';
   app.setGlobalPrefix(globalPrefix);
 
-  app.use(
-    '/api/v1/docs',
-    express.static(path.join(__dirname, 'swagger-static')),
-  );
-
   const config = new DocumentBuilder()
     .setTitle('Weather API')
     .setVersion('3.0')
-    .addServer(`${process.env.API_URL_SWAGGER || 'http://localhost:3000'}`)
+    .addServer(
+      `${process.env.API_URL_SWAGGER}` ||
+        `http://localhost:${process.env.PORT}`,
+    )
     .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup(`${globalPrefix}/docs`, app, document, {
-    customSiteTitle: 'Weather API doc',
-  });
+  SwaggerModule.setup(
+    `${globalPrefix}/docs`,
+    app,
+    SwaggerModule.createDocument(app, config),
+    {
+      customSiteTitle: 'Weather API doc',
+    },
+  );
 
   app.useGlobalPipes(
     new ValidationPipe({
