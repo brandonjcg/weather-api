@@ -13,6 +13,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Weather API')
     .setVersion('3.0')
+    .addServer(`${process.env.API_URL_SWAGGER}`)
     .build();
   SwaggerModule.setup(
     `${globalPrefix}/docs`,
